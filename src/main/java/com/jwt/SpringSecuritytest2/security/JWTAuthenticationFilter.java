@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -35,4 +36,23 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         return getAuthenticationManager().authenticate(usernamePAT);
     }
 
+    @Override
+    protected void successfulAuthentication(HttpServletRequest request,
+                                            HttpServletResponse response,
+                                            FilterChain chain,
+                                            Authentication authResult) throws IOException, ServletException {
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
+        String token = TokenUtils.createToken(userDetails.getNombre(), userDetails.getUsername());
+
+        response.addHeader("Authorization", "Bearer " + token);
+        response.getWriter().flush();
+
+        super.successfulAuthentication(request, response, chain, authResult);
+    }
+
+    //Esto sirve para encriptar una constraseña o palabra
+    //public static void main(String[] args) {
+    //    System.out.println("pass " + new BCryptPasswordEncoder().encode("darwin"));
+    //}
 }
