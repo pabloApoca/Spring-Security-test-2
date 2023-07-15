@@ -36,7 +36,7 @@ public class WebSecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .anyRequest()
-                //.permitAll() para permitir todas las peticiones
+                //.permitAll() //para permitir todas las peticiones
                 .authenticated() //para entrar con autentificacion
                 .and()
                 .sessionManagement()
