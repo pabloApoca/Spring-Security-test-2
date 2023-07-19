@@ -51,4 +51,15 @@ public class UserDetailsImpl implements UserDetails {
     public String getNombre() {
         return usuario.getNombre();
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"nombre\":" +"\""+ usuario.getNombre() +"\""+ "," +
+                "\"apellido\":" + "\""+ usuario.getApellido() +"\""+ "," +
+                "\"email\":" + "\""+ usuario.getEmail() +"\""+ "," +
+                "\"dni\":" + usuario.getDni() +
+                "}";
+    }
 }

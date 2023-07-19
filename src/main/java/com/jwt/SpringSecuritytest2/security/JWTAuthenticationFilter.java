@@ -48,15 +48,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.addHeader("Authorization", "Bearer " + token);
         response.addHeader("name", userDetails.getNombre());
         response.addHeader("username", userDetails.getUsername());
-        String us = userDetails.toString();
-        response.addHeader("tostring", us);
+        response.addHeader("user", userDetails.toString());
         response.getWriter().flush();
 
         super.successfulAuthentication(request, response, chain, authResult);
     }
 
     //Esto sirve para encriptar una constraseña o palabra
-    //public static void main(String[] args) {
-    //    System.out.println("pass " + new BCryptPasswordEncoder().encode("darwin"));
-    //}
+   /* public static void main(String[] args) {
+        System.out.println("pass " + new BCryptPasswordEncoder().encode("darwin"));
+    }*/
 }
