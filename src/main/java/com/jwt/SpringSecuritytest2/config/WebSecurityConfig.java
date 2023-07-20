@@ -35,6 +35,7 @@ public class WebSecurityConfig {
                 .and()
                 .csrf().disable()
                 .authorizeHttpRequests()
+                .antMatchers("/register").permitAll()
                 .anyRequest()
                 //.permitAll() //para permitir todas las peticiones
                 .authenticated() //para entrar con autentificacion

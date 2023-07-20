@@ -18,6 +18,11 @@ public class CorsConfig {
                         .allowedMethods("*")
                         .exposedHeaders("*");
 
+                registry.addMapping("/register")
+                        .allowedOrigins("http://localhost:4200")
+                        .allowedMethods("*")
+                        .exposedHeaders("*");
+
                 registry.addMapping("/api/**")
                         .allowedOrigins("http://localhost:4200")
                         .allowedMethods("*");

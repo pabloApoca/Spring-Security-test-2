@@ -13,8 +13,8 @@ public class Usuario {
     private Integer id;
 
     private String nombre;
-    private String email;
     private String apellido;
     private int dni;
+    private String email;
     private String password;
 }

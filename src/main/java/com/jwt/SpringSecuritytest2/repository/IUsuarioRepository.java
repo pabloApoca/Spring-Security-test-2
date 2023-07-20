@@ -10,4 +10,8 @@ import java.util.Optional;
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     Optional<Usuario> findOneByEmail(String email);
+
+    @Override
+    Usuario save(Usuario usuario);
+
 }
