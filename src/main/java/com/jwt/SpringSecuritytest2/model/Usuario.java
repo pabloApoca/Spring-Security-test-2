@@ -17,4 +17,14 @@ public class Usuario {
     private int dni;
     private String email;
     private String password;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"nombre\":" +"\""+ getNombre() +"\""+ "," +
+                "\"apellido\":" + "\""+ getApellido() +"\""+ "," +
+                "\"email\":" + "\""+ getEmail() +"\""+ "," +
+                "\"dni\":" + getDni() +
+                "}";
+    }
 }
